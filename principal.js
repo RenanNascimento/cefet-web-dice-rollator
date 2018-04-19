@@ -27,22 +27,19 @@ botaoRolar.addEventListener('click', function(){
     let soma = 0;
 
     /* coleta qtde de dados selecionados */
-    ids.forEach(function(id, i){
+    for (let id of ids){
         let qtdeDados = document.querySelector('#quantidadeD'+id).value;
         if(qtdeDados != 0){
-            for(let j=0; j < qtdeDados; j++){
-                if(i==0 && j==0){
-                    resultado.innerHTML += '';
-                }else{
-                    resultado.innerHTML += sumOP;
-                }
+            for(let i=0; i < qtdeDados; i++){
                 let rand = Math.ceil(Math.random() * id);
                 soma += rand;
-                resultado.innerHTML += rand;
+                resultado.innerHTML += rand + sumOP;
             }
-        }        
-    });
+        }
+    }
 
+    resultado.innerHTML = resultado.innerHTML.slice(0, resultado.innerHTML.length-sumOP.length);
     resultado.innerHTML += ' = ' + soma;
+
 
 });
